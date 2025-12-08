@@ -1,0 +1,57 @@
+:root {
+    /* ===== 颜色系统 ===== */
+    /* 品牌色 */
+    // --olympus-primary: #7c3aed;
+    --olympus-primary: red;
+    --olympus-primary-hover: #6d28d9;
+    --olympus-primary-pressed: #5b21b6;
+
+    /* 语义色 */
+    --olympus-success: #10b981;
+    --olympus-warning: #f59e0b;
+    --olympus-error: #ef4444;
+
+    /* 中性色 - 基于你调整的灰色 */
+    --olympus-text-primary: #f3f4f6;
+    /* 主要文字 */
+    --olympus-text-secondary: #d0d0e0;
+    /* 次要文字 */
+    --olympus-text-tertiary: #9ca3af;
+    /* 辅助文字 */
+
+    --olympus-bg-primary: #0f0f23;
+    /* 主要背景 */
+    --olympus-bg-secondary: #1a1a2e;
+    /* 卡片背景 */
+    --olympus-bg-tertiary: #252545;
+    /* 悬浮层背景 */
+
+    --olympus-border-primary: #2d2d4d;
+    --olympus-border-secondary: #3e3e5e;
+
+    /* ===== 间距系统 ===== */
+    --olympus-spacing-1: 4px;
+    --olympus-spacing-2: 8px;
+    --olympus-spacing-3: 12px;
+    --olympus-spacing-4: 16px;
+    --olympus-spacing-5: 24px;
+    --olympus-spacing-6: 32px;
+    --olympus-spacing-8: 48px;
+
+    /* ===== 圆角系统 ===== */
+    --olympus-radius-sm: 4px;
+    --olympus-radius-md: 8px;
+    --olympus-radius-lg: 12px;
+    --olympus-radius-xl: 16px;
+
+    /* ===== 阴影系统 ===== */
+    --olympus-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --olympus-shadow-md:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --olympus-shadow-lg:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* ===== 动画曲线 ===== */
+    --olympus-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --olympus-ease-in-out: cubic-bier(0.65, 0, 0.35, 1);
+}

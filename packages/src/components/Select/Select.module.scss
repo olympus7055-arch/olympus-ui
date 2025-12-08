@@ -1,0 +1,282 @@
+/* 容器 - 基础布局 */
+.selectContainer {
+    position: relative;
+    width: 100%;
+    max-width: 320px; /* 新增：限制最大宽度 */
+    min-width: 200px; /* 新增：保证最小宽度 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 选择触发器 - 主交互区域 */
+.selectTrigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-3, 12px) var(--space-4, 16px);
+    background: var(--olympus-surface, #1a1a2e);
+    border: 1px solid var(--olympus-border, #2d2d4d);
+    border-radius: var(--radius-md, 8px);
+    color: var(--olympus-text-primary, #a0a0b8);
+    cursor: pointer;
+    transition: all 0.2s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+    user-select: none;
+}
+
+.selectTrigger:hover:not(.selectDisabled) {
+    border-color: var(--olympus-primary, #7c3aed);
+    box-shadow: 0 0 0 1px var(--olympus-primary);
+}
+
+.selectTrigger:focus {
+    outline: none;
+    border-color: var(--olympus-primary, #7c3aed);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* 状态变体 */
+.selectTrigger.selectDisabled {
+    background: var(--olympus-bg, #0f0f23);
+    border-color: var(--olympus-border, #2d2d4d);
+    color: var(--olympus-text-secondary, #d0d0e0);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.selectTrigger.selectOpen {
+    border-color: var(--olympus-primary, #7c3aed);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* 选中值显示区域 */
+.selectSelectedValue {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2, 8px);
+    flex: 1;
+    min-width: 0;
+    /* 允许文本截断 */
+}
+
+.selectSelectedIcon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.selectSelectedLabel {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selectSelectedBalance {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--olympus-text-secondary, #d0d0e0);
+    flex-shrink: 0;
+    padding-left: var(--space-2, 8px);
+}
+
+/* 占位符文本 */
+.selectPlaceholder {
+    font-size: 14px;
+    color: var(--olympus-text-secondary, #d0d0e0);
+}
+
+/* 箭头图标 */
+.selectArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: var(--space-2, 8px);
+    flex-shrink: 0;
+    transition: transform 0.2s var(--ease-out);
+    color: var(--olympus-text-secondary, #d0d0e0);
+}
+
+.selectOpen .selectArrow {
+    transform: rotate(180deg);
+}
+
+/* 下拉菜单 - 悬浮层 */
+.selectDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--olympus-surface, #1a1a2e);
+    border: 1px solid var(--olympus-primary, #7c3aed);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md, 8px) var(--radius-md, 8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: selectDropdownSlideIn 0.2s var(--ease-out);
+    overflow: hidden;
+    max-height: 300px;
+}
+
+/* 搜索框 */
+.selectSearchBox {
+    padding: var(--space-2, 8px);
+    border-bottom: 1px solid var(--olympus-border, #2d2d4d);
+}
+
+.selectSearchInput {
+    width: 100%;
+    padding: var(--space-2, 8px) var(--space-3, 12px);
+    background: var(--olympus-bg, #0f0f23);
+    border: 1px solid var(--olympus-border, #2d2d4d);
+    border-radius: var(--radius-sm, 4px);
+    color: var(--olympus-text-primary, #a0a0b8);
+    font-size: 14px;
+    outline: none;
+}
+
+.selectSearchInput:focus {
+    border-color: var(--olympus-primary, #7c3aed);
+}
+
+.selectSearchInput::placeholder {
+    color: var(--olympus-text-secondary, #d0d0e0);
+}
+
+/* 选项列表 */
+.selectOptionsList {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: var(--space-1, 4px) 0;
+}
+
+/* 自定义滚动条 */
+.selectOptionsList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.selectOptionsList::-webkit-scrollbar-track {
+    background: var(--olympus-bg, #0f0f23);
+}
+
+.selectOptionsList::-webkit-scrollbar-thumb {
+    background: var(--olympus-border, #2d2d4d);
+    border-radius: 3px;
+}
+
+.selectOptionsList::-webkit-scrollbar-thumb:hover {
+    background: var(--olympus-primary, #7c3aed);
+}
+
+/* 单个选项 */
+.selectOption {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2, 8px);
+    padding: var(--space-3, 12px) var(--space-4, 16px);
+    cursor: pointer;
+    transition: background-color 0.1s var(--ease-out);
+    position: relative;
+}
+
+.selectOption:hover {
+    background: rgba(124, 58, 237, 0.1);
+}
+
+.selectOption.selectSelected {
+    background: rgba(124, 58, 237, 0.15);
+}
+
+/* 选项图标 */
+.selectOptionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+/* 选项内容区域 */
+.selectOptionContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.selectOptionLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1, 4px);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--olympus-text-primary, #a0a0b8);
+}
+
+.selectOptionPrefix {
+    font-size: 12px;
+    color: var(--olympus-text-secondary, #d0d0e0);
+}
+
+.selectOptionBalance {
+    font-size: 12px;
+    color: var(--olympus-text-secondary, #d0d0e0);
+}
+
+/* 选中标记 */
+.selectCheckmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: var(--olympus-primary, #7c3aed);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+/* 空状态 */
+.selectEmptyState {
+    padding: var(--space-5, 24px) var(--space-4, 16px);
+    text-align: center;
+    color: var(--olympus-text-secondary, #d0d0e0);
+    font-size: 14px;
+}
+
+/* 加载状态 */
+.selectLoading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.selectLoading .selectArrow {
+    animation: selectSpin 1s linear infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .selectTrigger {
+        padding: var(--space-3, 12px);
+    }
+
+    .selectOption {
+        padding: var(--space-3, 12px);
+    }
+
+    .selectDropdown {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: var(--radius-lg, 12px) var(--radius-lg, 12px) 0 0;
+        max-height: 60vh;
+    }
+}

@@ -1,0 +1,234 @@
+/* 主容器 */
+.playgroundContainer {
+    display: flex;
+    height: 100vh;
+    background: #f8fafc;
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 280px;
+    background: white;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.sidebarHeader {
+    padding: 24px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logoIcon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.025em;
+}
+
+.slogan {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.sidebarNav {
+    flex: 1;
+    padding: 16px 0;
+    overflow-y: auto;
+}
+
+.navButton {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #64748b;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.navButton:hover {
+    background: #f8fafc;
+    color: #475569;
+}
+
+.navButtonActive {
+    background: #f8fafc;
+    color: #8b5cf6;
+    border-left-color: #8b5cf6;
+    font-weight: 600;
+}
+
+.navLabel {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.navDescription {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.sidebarFooter {
+    padding: 16px 24px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.version {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* 主内容区域 */
+.mainContent {
+    flex: 1;
+    padding: 0;
+    overflow-y: auto;
+    background: #f8fafc;
+}
+
+/* 组件展示区域 */
+.componentShowcase {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 24px;
+}
+
+.componentHeader {
+    padding: 32px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.componentHeader h2 {
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.componentHeader p {
+    margin: 0;
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.componentVariants {
+    padding: 32px;
+    display: grid;
+    gap: 24px;
+}
+
+.variant {
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.variant:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.variant h4 {
+    margin: 0 0 8px 0;
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.variant p {
+    margin: 0 0 16px 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* 空状态 */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #64748b;
+}
+
+.emptyState h2 {
+    margin: 0 0 8px 0;
+    color: #475569;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .playgroundContainer {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .mainContent {
+        padding: 0;
+    }
+
+    .componentShowcase {
+        margin: 16px;
+        border-radius: 8px;
+    }
+
+    .componentHeader,
+    .componentVariants {
+        padding: 24px;
+    }
+}
+
+.block {
+    display: block;
+}

@@ -1,0 +1,23 @@
+{
+    "name": "@olympus-ui/core",
+    "version": "0.1.0",
+    "description": "Core components for Olympus UI",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+        "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0"
+    },
+    "devDependencies": {
+        "esbuild-sass-plugin": "^3.3.1",
+        "tsup": "^6.7.0",
+        "typescript": "^4.9.0"
+    }
+}
