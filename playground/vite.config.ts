@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path'; // 1. 引入 path 模块
 
 export default defineConfig({
     plugins: [react()],
@@ -10,13 +11,15 @@ export default defineConfig({
         },
         preprocessorOptions: {
             scss: {
-                // 弃用警告
                 silenceDeprecations: ['import', 'legacy-js-api'],
-                // 完全静默所有警告
                 quietDeps: true,
-                // 使用新版API
                 api: 'modern-compiler'
             }
+        }
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, '../packages/src'),
         }
     }
 });

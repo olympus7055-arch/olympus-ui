@@ -1,104 +1,145 @@
-// 文字截取
-@mixin text-overflow() {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    word-wrap: normal;
+// 1. 【核心】响应式容器查询 (现代首选，替代媒体查询)
+// 用途: 使组件样式能根据其自身容器宽度变化，而非整个视口
+// 使用: @include container-responsive('card') { padding: 2rem; }
+@mixin container-responsive($name, $max-width: null) {
+  container-type: inline-size;
+  container-name: #{$name};
+
+  @if $max-width {
+    @container #{$name} (max-width: #{$max-width}) {
+      @content;
+    }
+  } @else {
+    @container #{$name} {
+      @content;
+    }
+  }
 }
 
-//文字换行
-@mixin word-break() {
-    word-break: break-all;
-    word-wrap: break-word;
-    white-space: normal;
-}
+// 2. 【核心】高性能渐变边框 (Web3 UI高频需求)
+// 用途: 为Card、WalletButton等创建带渐变的边框，无额外DOM节点
+// 使用: @include gradient-border(linear-gradient(45deg, #8b5cf6, #ec4899), 1px);
+@mixin gradient-border($gradient, $width: 1px, $radius: var(--olympus-radius-lg)) {
+  position: relative;
+  border-radius: $radius;
+  background-clip: padding-box;
+  border: $width solid transparent;
 
-// 文字不换行
-@mixin no-wrap() {
-    word-break: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-}
-
-//文字限制行数
-@mixin ellipsis-lines($lines: 2) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: $lines;
-    -webkit-box-orient: vertical;
-}
-
-//顶部分割线
-@mixin setTopLine($c: #e5e5e5) {
-    content: ' ';
+  &::before {
+    content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 1px;
-    border-top: 1px solid $c;
-    background: $c;
-    transform: scaleY(0.5);
+    top: -$width;
+    right: -$width;
+    bottom: -$width;
+    left: -$width;
+    z-index: -1;
+    border-radius: $radius;
+    background: $gradient;
+  }
 }
 
-//底部分割线
-@mixin setBottomLine($c: #e5e5e5) {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px solid $c;
-    background: $c;
-    transform: scaleY(0.5);
+// 3. 【核心】暗色模式自动反转 (双主题友好)
+// 用途: 自动为图标、特定元素在暗色模式下应用反色或特定样式
+// 使用: @include dark-mode-invert(0.9); // 在暗色模式下将元素亮度设为90%
+@mixin dark-mode-invert($brightness: 0.9) {
+  @media (prefers-color-scheme: dark) {
+    filter: brightness($brightness) invert(1);
+  }
 }
 
-//左侧分割线
-@mixin setLeftLine($c: #e5e5e5) {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    bottom: 0;
-    border-left: 1px solid $c;
-    background: $c;
-    transform: scaleX(0.5);
+// 4. 【实用】滚动捕捉区域 (适用于TokenList、TransactionHistory长列表)
+// 用途: 创建可横向或纵向滚动捕捉的容器，提升移动端体验
+// 使用: @include scroll-snap('x'); 或 @include scroll-snap('y', 'mandatory');
+@mixin scroll-snap($direction: x, $behavior: proximity) {
+  scroll-snap-type: #{$direction} #{$behavior};
+  overflow-#{$direction}: auto;
+  -webkit-overflow-scrolling: touch;
+
+  & > * {
+    scroll-snap-align: start;
+  }
 }
 
-//右侧分割线
-@mixin setRightLine($c: #e5e5e5) {
-    content: ' ';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 1px;
-    bottom: 0;
-    border-right: 1px solid $c;
-    background: $c;
-    transform: scaleX(0.5);
+// 5. 【实用】硬件加速层 (用于Tooltip、Modal动画性能优化)
+// 用途: 为动画元素触发GPU加速，避免卡顿
+// 使用: @include hardware-accelerated;
+@mixin hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-// clearfix
-@mixin clearfix($extend: true) {
-    @if $extend {
-        @extend %clearfix;
+// 6. 【实用】可访问性焦点环 (符合WCAG标准)
+// 用途: 为键盘导航提供高可见性焦点指示，覆盖浏览器默认样式
+// 使用: 在 :focus-visible 选择器内使用 @include focus-ring;
+@mixin focus-ring($color: var(--olympus-interactive-primary)) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+  // 为不支持:focus-visible的浏览器提供回退
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@mixin truncate-address($prefix-length: 4, $suffix-length: 4) {
+  font-family: 'Monospace', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  letter-spacing: 0.02em;
+  // 核心：确保文本过长时显示省略号
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  // 注意：CSS无法直接按字符数截断，实际截断应由JS完成
+  // 这个Mixin只提供钱包地址的视觉基础样式
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1. 响应式断点 Mixin (移动优先)
+// 使用方式：@include respond-to('md') { ... }
+$breakpoints: (
+    'xs': 480px,   // 超小屏幕
+    'sm': 640px,   // 小屏幕
+    'md': 768px,   // 平板
+    'lg': 1024px,  // 桌面
+    'xl': 1280px,  // 大桌面
+    'xxl': 1536px, // 超大桌面
+);
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
     } @else {
-        &::after,
-        &::before {
-            content: '';
-            display: table;
-        }
-
-        &::after {
-            clear: both;
-        }
+        @warn "无效的断点名称: `#{$breakpoint}`。请使用: #{map-keys($breakpoints)}";
     }
 }
 
-%clearfix {
-    @include clearfix(false);
+// 2. 文本截断 Mixins (单行/多行)
+// 使用方式：@include text-truncate; 或 @include text-truncate-multiline(3);
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin text-truncate-multiline($lines: 2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+    // 注意：这是一个非标准属性，但在现代浏览器支持良好
 }

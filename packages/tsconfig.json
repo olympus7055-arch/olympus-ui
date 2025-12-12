@@ -1,0 +1,17 @@
+{
+    "extends": "../tsconfig.json", // 继承根配置
+    "compilerOptions": {
+        "outDir": "./dist", // 输出目录
+        "declaration": true, // 生成 .d.ts 声明文件（库必需！）
+        "declarationDir": "./dist/types",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "references": [] // 可以引用内部其他包
+}

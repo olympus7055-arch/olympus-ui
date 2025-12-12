@@ -1,235 +1,87 @@
-html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: var(--weui-FG);
+/* ===== Olympus UI - 核心样式重置 ===== */
+/* 目标：提供最必要的样式归一化，避免过度重置干扰宿主项目。 */
+
+/* 1. 盒模型统一 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-article,
-aside,
-figcaption,
+/* 2. 移除默认边距 */
+body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
 figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
-    display: block;
-}
-
-body {
-    margin: 0;
-    font-family:
-        'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
-        'Hiragino Sans GB', STHeiti, 'Microsoft Sans Serif',
-        'WenQuanYi Micro Hei', sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0;
-    font-size: 1em;
-}
-
-pre,
-code,
-kbd,
-samp {
-    font-family: inherit;
-    font-size: 1em;
-}
-
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
+hr, fieldset, legend {
     margin: 0;
 }
 
-dd,
-dl,
-li,
-ol,
-ul {
-    margin: 0;
+/* 3. 列表样式重置 */
+ol, ul {
+    list-style: none;
     padding: 0;
 }
 
-ol,
-ul {
-    list-style: none outside none;
-}
-
-a {
-    background-color: transparent;
-    text-decoration: none;
-
-    &:active {
-        outline: 0;
-    }
-}
-
-abbr[title] {
-    border-bottom: none;
-    text-decoration: underline;
-    text-decoration: underline dotted;
-}
-
-b,
-strong {
-    font-weight: bolder;
-}
-
-small {
-    font-size: 80%;
-}
-
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-
-sub {
-    bottom: -0.25em;
-}
-
-sup {
-    top: -0.5em;
-}
-
-img {
-    border-style: none;
-    vertical-align: middle;
-    max-width: 100%;
-}
-
+/* 4. 核心表单重置 (组件库自定义样式的基础) */
 button,
 input,
-optgroup,
 select,
 textarea {
+    font-family: inherit;
     font-size: 100%;
-    margin: 0;
-}
-
-button,
-input {
-    overflow: visible;
-}
-
-button,
-select {
-    text-transform: none;
-}
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-    -webkit-appearance: button;
-}
-
-button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
-}
-
-button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
-    outline: 1px dotted ButtonText;
-}
-
-fieldset {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
-
-legend {
-    box-sizing: border-box;
+    line-height: 1.15;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
     color: inherit;
-    display: table;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+/* 按钮特定重置 */
+button {
+    padding: 0;
+    cursor: pointer;
+}
+
+/* 5. 媒体元素适配 */
+img, picture, video, canvas, svg {
+    display: block;
     max-width: 100%;
-    padding: 0;
-    white-space: normal;
-}
-
-progress {
-    vertical-align: baseline;
-}
-
-textarea {
-    vertical-align: top;
-    overflow: auto;
-    resize: none;
-}
-
-[type='checkbox'],
-[type='radio'] {
-    box-sizing: border-box;
-    padding: 0;
-}
-
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
     height: auto;
 }
 
-[type='search'] {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
+/* 6. 表格重置 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-[type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
+/* 7. 可访问性工具类 */
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
-::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    font: inherit;
+/* 8. Web3/数字产品增强：等宽字体优化 */
+code, kbd, pre, samp {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.9em;
 }
 
-details {
-    display: block;
-}
-
-summary {
-    display: list-item;
-}
-
-template {
-    display: none;
-}
-
-[hidden] {
-    display: none;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
+/* 9. 为组件库设置的基础主题变量 (无强制样式) */
+body {
+    background-color: var(--olympus-bg-primary, #ffffff);
+    color: var(--olympus-text-primary, #111827);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
 }

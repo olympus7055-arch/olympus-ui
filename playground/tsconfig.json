@@ -1,4 +1,5 @@
 {
+    "extends": "../tsconfig.json",
     "compilerOptions": {
         "target": "ES2020",
         "useDefineForClassFields": true,
@@ -29,6 +30,6 @@
         /* Vite types */
         "types": ["vite/client"]
     },
-    "include": ["src", "src/vite-env.d.ts", "css-modules.d.ts"],
+    "include": ["src", "../src/vite-env.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

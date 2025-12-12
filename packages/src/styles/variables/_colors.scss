@@ -1,57 +1,41 @@
 :root {
-    /* ===== 颜色系统 ===== */
-    /* 品牌色 */
-    // --olympus-primary: #7c3aed;
-    --olympus-primary: red;
+    /* ===== 1. 品牌色 & 语义色 ===== */
+    --olympus-primary: #7c3aed;
     --olympus-primary-hover: #6d28d9;
     --olympus-primary-pressed: #5b21b6;
-
-    /* 语义色 */
     --olympus-success: #10b981;
     --olympus-warning: #f59e0b;
     --olympus-error: #ef4444;
 
-    /* 中性色 - 基于你调整的灰色 */
-    --olympus-text-primary: #f3f4f6;
-    /* 主要文字 */
-    --olympus-text-secondary: #d0d0e0;
-    /* 次要文字 */
-    --olympus-text-tertiary: #9ca3af;
-    /* 辅助文字 */
+    /* ===== 2. 中性色 - 浅色主题默认值 ===== */
+    /* 文本色 */
+    --olympus-text-primary: #111827;          /* 最重要文字 (深灰近黑) */
+    --olympus-text-secondary: #6b7280;        /* 次要/描述文字 (中灰) */
+    --olympus-text-tertiary: #9ca3af;         /* 辅助/禁用文字 (浅灰) */
+    /* 背景色 */
+    --olympus-bg-primary: #ffffff;            /* 最底层页面背景 (纯白) */
+    --olympus-bg-secondary: #f9fafb;          /* 卡片、模块背景 (浅灰白) */
+    --olympus-bg-tertiary: #f3f4f6;           /* 悬浮层、输入框背景 (稍深的浅灰) */
+    --olympus-bg-mask: rgba(0, 0, 0, 0.45);   /* 遮罩 (深色半透明) */
+    /* 边框色 */
+    --olympus-border-primary: #e5e7eb;        /* 常规边框 (浅灰) */
+    --olympus-border-secondary: #d1d5db;      /* 强调/深色边框 (中灰) */
+}
 
-    --olympus-bg-primary: #0f0f23;
-    /* 主要背景 */
-    --olympus-bg-secondary: #1a1a2e;
-    /* 卡片背景 */
-    --olympus-bg-tertiary: #252545;
-    /* 悬浮层背景 */
-
-    --olympus-border-primary: #2d2d4d;
-    --olympus-border-secondary: #3e3e5e;
-
-    /* ===== 间距系统 ===== */
-    --olympus-spacing-1: 4px;
-    --olympus-spacing-2: 8px;
-    --olympus-spacing-3: 12px;
-    --olympus-spacing-4: 16px;
-    --olympus-spacing-5: 24px;
-    --olympus-spacing-6: 32px;
-    --olympus-spacing-8: 48px;
-
-    /* ===== 圆角系统 ===== */
-    --olympus-radius-sm: 4px;
-    --olympus-radius-md: 8px;
-    --olympus-radius-lg: 12px;
-    --olympus-radius-xl: 16px;
-
-    /* ===== 阴影系统 ===== */
-    --olympus-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --olympus-shadow-md:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --olympus-shadow-lg:
-        0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-    /* ===== 动画曲线 ===== */
-    --olympus-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --olympus-ease-in-out: cubic-bier(0.65, 0, 0.35, 1);
+/* ===== 3. 暗色主题覆盖 ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* 中性色 - 暗色主题值 (基于你原先的深色设计) */
+        --olympus-text-primary: #f3f4f6;          /* 主要文字 (亮白) */
+        --olympus-text-secondary: #d1d5db;        /* 次要文字 (浅灰) */
+        --olympus-text-tertiary: #9ca3af;         /* 辅助文字 (中灰) */
+        
+        --olympus-bg-primary: #0f0f23;            /* 主要背景 (深蓝黑) */
+        --olympus-bg-secondary: #1a1a2e;          /* 卡片背景 (深蓝灰) */
+        --olympus-bg-tertiary: #252545;           /* 悬浮层背景 (深紫灰) */
+        --olympus-bg-mask: rgba(0, 0, 0, 0.65);   /* 遮罩 (更深的半透明黑) */
+        
+        --olympus-border-primary: #2d2d4d;        /* 常规边框 (深紫灰) */
+        --olympus-border-secondary: #3e3e5e;      /* 强调边框 (稍亮的紫灰) */
+    }
 }

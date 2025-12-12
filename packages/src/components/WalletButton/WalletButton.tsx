@@ -1,54 +1,41 @@
 import React from 'react';
-import styles from './WalletButton.module.scss'; // 导入 CSS Modules
+import { formatAddress } from '@/utils/format/address';
+import styles from './WalletButton.module.scss';
+import type { WalletButtonProps } from './types';
 
-export interface WalletButtonProps {
-    connected?: boolean;
-    address?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    disabled?: boolean;
-    loading?: boolean;
-}
-
-export function WalletButton({
+// 使用 `export const` 声明箭头函数组件
+export const WalletButton: React.FC<WalletButtonProps> = ({
     connected = false,
     address,
     onClick,
     disabled = false,
     loading = false,
-}: WalletButtonProps) {
-    const getButtonClass = (): string => {
-        let className = styles.button; // 使用 styles.xxx 访问类名
-
-        if (connected) {
-            className += ` ${styles.connected}`;
-        }
-
-        if (disabled) {
-            className += ` ${styles.disabled}`;
-        }
-
-        if (loading) {
-            className += ` ${styles.loading}`;
-        }
-
-        return className;
-    };
+}) => {
+    const buttonClasses = [
+        styles.button,
+        connected && styles.connected,
+        disabled && styles.disabled,
+        loading && styles.loading,
+    ]
+        .filter(Boolean)
+        .join(' ');
 
     const getButtonText = (): string => {
         if (loading) return 'Connecting...';
         if (connected && address) {
-            return `🔗 ${address.slice(0, 6)}...${address.slice(-4)}`;
+            return formatAddress(address, { prefixLength: 6, suffixLength: 4 });
         }
-        return '🦊 Connect Wallet';
+        return 'Connect Wallet';
     };
 
     return (
         <button
-            className={getButtonClass()} // 应用 CSS Modules 类名
+            className={buttonClasses}
             onClick={onClick}
             disabled={disabled || loading}
+            type="button" // 显式声明按钮类型，避免在表单中意外提交
         >
             {getButtonText()}
         </button>
     );
-}
+};

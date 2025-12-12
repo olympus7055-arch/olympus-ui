@@ -2,4 +2,41 @@
 @use './variables/theme-tokens';
 @use './base/reset';
 @use './base/mixins';
-@use './base/animations.global.scss';
+@use './base/animations';
+
+:root {
+    /* ===== 间距系统 ===== */
+    --olympus-spacing-1: 4px;
+    --olympus-spacing-2: 8px;
+    --olympus-spacing-3: 12px;
+    --olympus-spacing-4: 16px;
+    --olympus-spacing-5: 24px;
+    --olympus-spacing-6: 32px;
+    --olympus-spacing-8: 48px;
+
+    /* ===== 圆角系统 ===== */
+    --olympus-radius-sm: 4px;
+    --olympus-radius-md: 8px;
+    --olympus-radius-lg: 12px;
+    --olympus-radius-xl: 16px;
+
+    /* ===== 阴影系统 ===== */
+    --olympus-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --olympus-shadow-md:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --olympus-shadow-lg:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* ===== 动画曲线 ===== */
+    --olympus-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --olympus-ease-in-out: cubic-bier(0.65, 0, 0.35, 1);
+}
+
+// 暗色主题阴影覆盖
+@media (prefers-color-scheme: dark) {
+    :root {
+        --olympus-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        --olympus-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        --olympus-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    }
+}
