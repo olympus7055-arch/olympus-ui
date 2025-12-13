@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatAddress } from '@/utils/format/address';
+import { formatAddress } from '@/utils/format';
 import styles from './WalletButton.module.scss';
 import type { WalletButtonProps } from './types';
 

@@ -4,6 +4,7 @@
         "outDir": "./dist", // 输出目录
         "declaration": true, // 生成 .d.ts 声明文件（库必需！）
         "declarationDir": "./dist/types",
+        "baseUrl": ".",
         "paths": {
             "@/*": [
                 "./src/*"
