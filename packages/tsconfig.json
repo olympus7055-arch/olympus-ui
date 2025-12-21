@@ -1,18 +1,44 @@
 {
-    "extends": "../tsconfig.json", // 继承根配置
+    "extends": "../tsconfig.json",
     "compilerOptions": {
-        "outDir": "./dist", // 输出目录
-        "declaration": true, // 生成 .d.ts 声明文件（库必需！）
-        "declarationDir": "./dist/types",
-        "baseUrl": ".",
+        "composite": true,
+        "noEmit": false,
+        "declaration": true,
+        "declarationMap": true,
+        "emitDeclarationOnly": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "baseUrl": "./src",
         "paths": {
             "@/*": [
-                "./src/*"
+                "./*"
             ]
-        },
+        }
     },
     "include": [
         "src/**/*"
     ],
-    "references": [] // 可以引用内部其他包
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
+
+//     "compilerOptions": {
+//         "emitDeclarationOnly": true, 
+//         "outDir": "./dist", // 输出目录
+//         "composite": true,
+//         "declaration": true, // 生成 .d.ts 声明文件（库必需！）
+//         "declarationDir": "./dist/types",
+//         "baseUrl": ".",
+//         "paths": {
+//             "@/*": [
+//                 "./src/*"
+//             ]
+//         },
+//     },
+//     "include": [
+//         "src/**/*"
+//     ],
+//     "references": [] // 可以引用内部其他包
+// }

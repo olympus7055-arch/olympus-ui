@@ -1,37 +1,79 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "composite": true, // 关键：启用项目引用
-    "types": ["vite/client"]
-  },
-  "exclude": ["node_modules", "dist"]
+    "compilerOptions": {
+        "target": "ES2020",
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "skipLibCheck": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "useDefineForClassFields": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {}
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "packages/dist",
+        "playground/dist"
+    ]
 }
-
 // {
-//         "useDefineForClassFields": true,
-//         "lib": ["ES2020", "DOM", "DOM.Iterable", "ESNext"],
-//         /* Bundler mode */
+//     "compilerOptions": {
+//         "target": "ES2020",
+//         "lib": [
+//             "ES2020",
+//             "DOM",
+//             "DOM.Iterable",
+//             "ESNext"
+//         ],
+//         "module": "ESNext",
+//         "composite": true,
+//         "noEmit": true,
+//         "skipLibCheck": true,
 //         "moduleResolution": "bundler",
 //         "allowImportingTsExtensions": true,
 //         "resolveJsonModule": true,
 //         "isolatedModules": true,
-//         "noEmit": true,
 //         "jsx": "react-jsx",
 //         "strict": true,
 //         "noUnusedLocals": true,
 //         "noUnusedParameters": true,
 //         "noFallthroughCasesInSwitch": true,
+//         "useDefineForClassFields": true,
+//         "types": [
+//             "vite/client"
+//         ],
 //         "baseUrl": ".",
 //         "paths": {
-//             "@/*": ["./src/*"]
+//             "@olympus-ui/*": [
+//                 "packages/src/*"
+//             ]
 //         },
-//         "types": ["vite/client"]
+//         "esModuleInterop": true,
 //     },
-//     "include": ["src","vite-env.d.ts"],
-//     "references": [{ "path": "./tsconfig.node.json" }]
+//     "references": [
+//         { "path": "./packages" },
+//         { "path": "./playground" }
+//     ],
+//     "exclude": [
+//         "node_modules",
+//         "dist"
+//     ],
+//     "include": [
+//         "vite-env.d.ts", // 如果有的话
+//         "**/*.d.ts" // 包含所有类型声明文件
+//     ]
+// }

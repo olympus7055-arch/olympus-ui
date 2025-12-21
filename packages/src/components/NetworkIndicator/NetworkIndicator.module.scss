@@ -52,14 +52,14 @@
     .toggleButton {
         padding: 4px 12px;
         border: 1px solid #6c757d;
-        background: white;
-        border-radius: 4px;
+        background: #7c3aed;
+        border-radius: 2px;
         font-size: 12px;
         cursor: pointer;
         transition: all 0.2s ease;
 
         &:hover:not(:disabled) {
-            background: #6c757d;
+            background: #6d28d9;
             color: white;
         }
 

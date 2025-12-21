@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../packages/src/styles/olympus.scss';
-import { WalletButton } from '../../packages/src/components/WalletButton';
+import { WalletButton } from '@olympus-ui/components/WalletButton';
 import { NetworkIndicator } from '../../packages/src/components/NetworkIndicator';
 import { NetworkQualityIndicator } from '../../packages/src/components/NetworkQualityIndicator';
 import { TextInput } from '../../packages/src/components/TextInput';
@@ -42,6 +42,18 @@ const App: React.FC = () => {
                             <p>未连接钱包时的状态</p>
                             <WalletButton
                                 onClick={() => console.log('连接钱包')}
+                            />
+                        </div>
+
+                        <div className={styles.variant}>
+                            <h4>已连接状态</h4>
+                            <p>已连接钱包时的状态</p>
+                            <WalletButton
+                                connected
+                                address="0x742d35Abc9d5d7a4d35a0b8c1c8d35a"
+                                chainId={1}
+                                networkName="Ethereum"
+                               
                             />
                         </div>
 

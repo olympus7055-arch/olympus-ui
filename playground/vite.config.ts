@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path'; // 1. 引入 path 模块
+import path from 'path';
 
 export default defineConfig({
     plugins: [react()],
@@ -19,6 +19,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
+            '@olympus-ui': path.resolve(__dirname, '../packages/src'),
             '@': path.resolve(__dirname, '../packages/src'),
         }
     }

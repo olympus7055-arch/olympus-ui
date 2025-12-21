@@ -9,7 +9,12 @@ export const WalletButton: React.FC<WalletButtonProps> = ({
     address,
     onClick,
     disabled = false,
-    loading = false,
+    loading = false,    
+    chainId,        
+    networkName,
+    avatar,
+    balance,
+    onDisconnect
 }) => {
     const buttonClasses = [
         styles.button,
@@ -23,7 +28,9 @@ export const WalletButton: React.FC<WalletButtonProps> = ({
     const getButtonText = (): string => {
         if (loading) return 'Connecting...';
         if (connected && address) {
-            return formatAddress(address, { prefixLength: 6, suffixLength: 4 });
+            const formatted = formatAddress(address, { prefixLength: 6, suffixLength: 4 });
+            // 在网络名存在时显示 "Polygon: 0xab...1234"
+            return networkName ? `${networkName}: ${formatted}` : formatted;
         }
         return 'Connect Wallet';
     };
