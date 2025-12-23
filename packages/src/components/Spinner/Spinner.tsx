@@ -16,8 +16,8 @@ export const Spinner: React.FC<SpinnerProps> = ({
         styles[size],
         className,
     ]
-        .filter(Boolean)
-        .join(' ');
+        .filter(Boolean)        // 过滤多余undefined，null，false
+        .join(' ');             // 数组转字符串，类名格式
 
     const ringClasses = [
         styles.spinnerRing,
