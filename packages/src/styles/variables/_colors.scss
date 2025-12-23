@@ -1,41 +1,71 @@
 :root {
-    /* ===== 1. 品牌色 & 语义色 ===== */
+    /* ===== 1. 核心品牌色 ===== */
+    /* 定义组件最基础、最常用的交互色 */
     --olympus-primary: #7c3aed;
     --olympus-primary-hover: #6d28d9;
     --olympus-primary-pressed: #5b21b6;
+
+    /* ===== 2. 功能语义色 ===== */
+    /* 用于明确反馈状态，请勿与神话色混用 */
     --olympus-success: #10b981;
     --olympus-warning: #f59e0b;
     --olympus-error: #ef4444;
 
-    /* ===== 2. 中性色 - 浅色主题默认值 ===== */
+    /* ===== 3. 奥林匹斯神话色系 ===== */
+    /* 【方案一】作为独立主题色，与1、2层并列 */
+    --olympus-zeus: #4f46e5;        /* 宙斯 - 雷霆/权威 */
+    --olympus-zeus-hover: #4338ca;
+    --olympus-zeus-pressed: #3730a3;
+
+    --olympus-athena: #06b6d4;      /* 雅典娜 - 智慧/策略 */
+    --olympus-athena-hover: #0891b2;
+    --olympus-athena-pressed: #0e7490;
+
+    --olympus-apollo: #fbbf24;      /* 阿波罗 - 光明/艺术 (使用更独特的“神食金”) */
+    --olympus-apollo-hover: #f59e0b;
+    --olympus-apollo-pressed: #d97706;
+
+    --olympus-ares: #dc2626;        /* 阿瑞斯 - 战争/危险 (使用更深的红，区别于错误色) */
+    --olympus-ares-hover: #b91c1c;
+    --olympus-ares-pressed: #991b1b;
+
+    --olympus-hades: #8b5cf6;       /* 哈迪斯 - 冥界/神秘 */
+    --olympus-hades-hover: #7c3aed;
+    --olympus-hades-pressed: #6d28d9;
+
+    /* 4. 神话元素色 */
+    --olympus-olive: #84cc16;       /* 橄榄枝 - 和平 */
+    --olympus-laurel: #10b981;      /* 月桂 - 荣耀 */
+    --olympus-ambrosia: #fbbf24;    /* 神食 - 滋养 */
+    --olympus-starlight: #ff6b6b;   /* 星芒金 - 神性光芒 */
+
+    /* ===== 5. 中性色 - 浅色主题默认值 ===== */
     /* 文本色 */
-    --olympus-text-primary: #111827;          /* 最重要文字 (深灰近黑) */
-    --olympus-text-secondary: #6b7280;        /* 次要/描述文字 (中灰) */
-    --olympus-text-tertiary: #9ca3af;         /* 辅助/禁用文字 (浅灰) */
+    --olympus-text-primary: #111827;
+    --olympus-text-secondary: #6b7280;
+    --olympus-text-tertiary: #9ca3af;
     /* 背景色 */
-    --olympus-bg-primary: #ffffff;            /* 最底层页面背景 (纯白) */
-    --olympus-bg-secondary: #f9fafb;          /* 卡片、模块背景 (浅灰白) */
-    --olympus-bg-tertiary: #f3f4f6;           /* 悬浮层、输入框背景 (稍深的浅灰) */
-    --olympus-bg-mask: rgba(0, 0, 0, 0.45);   /* 遮罩 (深色半透明) */
+    --olympus-bg-primary: #ffffff;
+    --olympus-bg-secondary: #f9fafb;
+    --olympus-bg-tertiary: #f3f4f6;
+    --olympus-bg-mask: rgba(0, 0, 0, 0.45);
     /* 边框色 */
-    --olympus-border-primary: #e5e7eb;        /* 常规边框 (浅灰) */
-    --olympus-border-secondary: #d1d5db;      /* 强调/深色边框 (中灰) */
+    --olympus-border-primary: #e5e7eb;
+    --olympus-border-secondary: #d1d5db;
 }
 
-/* ===== 3. 暗色主题覆盖 ===== */
+/* ===== 6. 暗色主题覆盖 ===== */
 @media (prefers-color-scheme: dark) {
     :root {
-        /* 中性色 - 暗色主题值 (基于你原先的深色设计) */
-        --olympus-text-primary: #f3f4f6;          /* 主要文字 (亮白) */
-        --olympus-text-secondary: #d1d5db;        /* 次要文字 (浅灰) */
-        --olympus-text-tertiary: #9ca3af;         /* 辅助文字 (中灰) */
-        
-        --olympus-bg-primary: #0f0f23;            /* 主要背景 (深蓝黑) */
-        --olympus-bg-secondary: #1a1a2e;          /* 卡片背景 (深蓝灰) */
-        --olympus-bg-tertiary: #252545;           /* 悬浮层背景 (深紫灰) */
-        --olympus-bg-mask: rgba(0, 0, 0, 0.65);   /* 遮罩 (更深的半透明黑) */
-        
-        --olympus-border-primary: #2d2d4d;        /* 常规边框 (深紫灰) */
-        --olympus-border-secondary: #3e3e5e;      /* 强调边框 (稍亮的紫灰) */
+        /* 中性色 - 暗色主题值 */
+        --olympus-text-primary: #f3f4f6;
+        --olympus-text-secondary: #d1d5db;
+        --olympus-text-tertiary: #9ca3af;
+        --olympus-bg-primary: #0f0f23;
+        --olympus-bg-secondary: #1a1a2e;
+        --olympus-bg-tertiary: #252545;
+        --olympus-bg-mask: rgba(0, 0, 0, 0.65);
+        --olympus-border-primary: #2d2d4d;
+        --olympus-border-secondary: #3e3e5e;
     }
 }

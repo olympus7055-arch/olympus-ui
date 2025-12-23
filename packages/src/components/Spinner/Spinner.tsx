@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Spinner.module.scss';
 import type { SpinnerProps } from './types';
 
-// 使用 `export const` 声明箭头函数组件
 export const Spinner: React.FC<SpinnerProps> = ({
     size = 'medium',
     variant = 'primary',
@@ -12,7 +11,6 @@ export const Spinner: React.FC<SpinnerProps> = ({
     className = '',
     style,
 }) => {
-    // 构建CSS类名
     const spinnerClasses = [
         styles.spinner,
         styles[size],
@@ -64,5 +62,4 @@ export const Spinner: React.FC<SpinnerProps> = ({
     );
 };
 
-// 默认导出
 export default Spinner;
