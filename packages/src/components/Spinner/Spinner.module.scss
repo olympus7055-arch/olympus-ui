@@ -1,0 +1,130 @@
+@import '../../styles/base/mixins';
+@import '../../styles/base/animations';
+
+.spinner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+
+    &.small {
+        --spinner-size: 16px;
+        --font-size: 12px;
+    }
+
+    &.medium {
+        --spinner-size: 24px;
+        --font-size: 14px;
+    }
+
+    &.large {
+        --spinner-size: 32px;
+        --font-size: 16px;
+    }
+}
+
+.spinnerRing {
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    position: relative;
+    animation: spin var(--spinner-speed, 1s) linear infinite;
+
+    // 神话主题配色 - 阿波罗（太阳神）
+    &.primary {
+        border-top-color: #FFD700; // 金色 - 阿波罗的太阳光芒
+        border-right-color: rgba(255, 215, 0, 0.5);
+        border-bottom-color: rgba(255, 215, 0, 0.3);
+        border-left-color: rgba(255, 215, 0, 0.1);
+    }
+
+    // 雅典娜（智慧女神）
+    &.secondary {
+        border-top-color: #4169E1; // 皇家蓝
+        border-right-color: rgba(65, 105, 225, 0.5);
+        border-bottom-color: rgba(65, 105, 225, 0.3);
+        border-left-color: rgba(65, 105, 225, 0.1);
+    }
+
+    // 德墨忒尔（农业女神）
+    &.success {
+        border-top-color: #4CAF50; // 绿色
+        border-right-color: rgba(76, 175, 80, 0.5);
+        border-bottom-color: rgba(76, 175, 80, 0.3);
+        border-left-color: rgba(76, 175, 80, 0.1);
+    }
+
+    // 赫菲斯托斯（火神）
+    &.warning {
+        border-top-color: #FF9800; // 橙色
+        border-right-color: rgba(255, 152, 0, 0.5);
+        border-bottom-color: rgba(255, 152, 0, 0.3);
+        border-left-color: rgba(255, 152, 0, 0.1);
+    }
+
+    // 阿瑞斯（战神）
+    &.danger {
+        border-top-color: #F44336; // 红色
+        border-right-color: rgba(244, 67, 54, 0.5);
+        border-bottom-color: rgba(244, 67, 54, 0.3);
+        border-left-color: rgba(244, 67, 54, 0.1);
+    }
+
+    // 尺寸变体
+    &.sizeSmall {
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+
+    &.sizeMedium {
+        width: 24px;
+        height: 24px;
+        border-width: 3px;
+    }
+
+    &.sizeLarge {
+        width: 32px;
+        height: 32px;
+        border-width: 4px;
+    }
+}
+
+.spinnerText {
+    margin-top: 8px;
+    font-size: var(--font-size);
+    color: #666;
+    font-weight: 500;
+    text-align: center;
+
+    .small & {
+        margin-top: 6px;
+    }
+
+    .large & {
+        margin-top: 10px;
+    }
+}
+
+// 为每个变体添加对应的文本颜色
+.primary .spinnerText {
+    color: #FFD700;
+}
+
+.secondary .spinnerText {
+    color: #4169E1;
+}
+
+.success .spinnerText {
+    color: #4CAF50;
+}
+
+.warning .spinnerText {
+    color: #FF9800;
+}
+
+.danger .spinnerText {
+    color: #F44336;
+}

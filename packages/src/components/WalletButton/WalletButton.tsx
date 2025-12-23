@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { formatAddress } from '@/utils/format';
 import styles from './WalletButton.module.scss';
 import type { WalletButtonProps } from './types';
@@ -16,14 +16,17 @@ export const WalletButton: React.FC<WalletButtonProps> = ({
     balance,
     onDisconnect
 }) => {
-    const buttonClasses = [
-        styles.button,
-        connected && styles.connected,
-        disabled && styles.disabled,
-        loading && styles.loading,
-    ]
-        .filter(Boolean)
-        .join(' ');
+    // 使用 useMemo 缓存类名计算结果
+    const buttonClasses = useMemo(() => {
+        return [
+            styles.button,
+            connected && styles.connected,
+            disabled && styles.disabled,
+            loading && styles.loading,
+        ]
+            .filter(Boolean)
+            .join(' ');
+    }, [connected, disabled, loading]); // 依赖项：只有这些变化时才重新计算
 
     const getButtonText = (): string => {
         if (loading) return 'Connecting...';

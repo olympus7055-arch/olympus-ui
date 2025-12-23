@@ -7,6 +7,7 @@ import { TextInput } from '../../packages/src/components/TextInput';
 import { Select } from '../../packages/src/components/Select';
 import { Checkbox } from '../../packages/src/components/Checkbox';
 import { Radio, RadioGroup } from '../../packages/src/components/Radio';
+import { Spinner } from '../../packages/src/components/Spinner';
 import styles from './App.module.css';
 
 // 定义组件标签类型
@@ -527,6 +528,82 @@ const App: React.FC = () => {
                                 <Radio value="usdc" label="USDC" />
                                 <Radio value="dai" label="DAI" />
                             </RadioGroup>
+                        </div>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            id: 'spinner',
+            label: 'Spinner',
+            description: '加载指示器',
+            component: (
+                <div className={styles.componentShowcase}>
+                    <div className={styles.componentHeader}>
+                        <h2>Spinner 加载指示器</h2>
+                        <p>神话主题的加载动画，每个变体对应不同的奥林匹斯神祇</p>
+                    </div>
+
+                    <div className={styles.componentVariants}>
+                        {/* 基础尺寸展示 */}
+                        <div className={styles.variant}>
+                            <h4>尺寸变体</h4>
+                            <p>不同大小的加载器</p>
+                            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                                <Spinner size="small" />
+                                <Spinner size="medium" />
+                                <Spinner size="large" />
+                            </div>
+                        </div>
+
+                        {/* 神话主题变体 */}
+                        <div className={styles.variant}>
+                            <h4>神话主题变体</h4>
+                            <p>每个变体代表一位奥林匹斯神祇</p>
+                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                                <Spinner variant="primary" withText text="阿波罗 - 太阳神" />
+                                <Spinner variant="secondary" withText text="雅典娜 - 智慧女神" />
+                                <Spinner variant="success" withText text="德墨忒尔 - 农业女神" />
+                                <Spinner variant="warning" withText text="赫菲斯托斯 - 火神" />
+                                <Spinner variant="danger" withText text="阿瑞斯 - 战神" />
+                            </div>
+                        </div>
+
+                        {/* 自定义速度 */}
+                        <div className={styles.variant}>
+                            <h4>自定义速度</h4>
+                            <p>不同旋转速度的加载器</p>
+                            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                                <Spinner speed={500} withText text="快速 (500ms)" />
+                                <Spinner speed={1000} withText text="标准 (1000ms)" />
+                                <Spinner speed={2000} withText text="慢速 (2000ms)" />
+                            </div>
+                        </div>
+
+                        {/* 组合使用 */}
+                        <div className={styles.variant}>
+                            <h4>组合示例</h4>
+                            <p>在按钮中使用的加载状态</p>
+                            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                                <button 
+                                    style={{ 
+                                        padding: '8px 16px', 
+                                        background: '#667eea', 
+                                        color: 'white', 
+                                        border: 'none', 
+                                        borderRadius: '4px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px'
+                                    }}
+                                >
+                                    <Spinner size="small" variant="primary" />
+                                    交易处理中...
+                                </button>
+                                <div style={{ fontSize: '14px', color: '#666' }}>
+                                    模拟 Web3 交易加载状态
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
