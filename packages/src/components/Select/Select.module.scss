@@ -4,8 +4,8 @@
 .selectContainer {
     position: relative;
     width: 100%;
-    max-width: 320px; /* 新增：限制最大宽度 */
-    min-width: 200px; /* 新增：保证最小宽度 */
+    max-width: 320px;
+    min-width: 200px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -17,37 +17,39 @@
     justify-content: space-between;
     width: 100%;
     padding: var(--space-3, 12px) var(--space-4, 16px);
-    background: var(--olympus-surface, #1a1a2e);
-    border: 1px solid var(--olympus-border, #2d2d4d);
+    /* 【修正1】使用正确的背景和边框变量 */
+    background: var(--olympus-bg-secondary);
+    border: 1px solid var(--olympus-border-primary);
     border-radius: var(--radius-md, 8px);
-    color: var(--olympus-text-primary, #a0a0b8);
+    color: var(--olympus-text-primary); /* 【修正2】使用主文本色 */
     cursor: pointer;
-    transition: all 0.2s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+    transition: all 0.2s ease;
     user-select: none;
 }
 
 .selectTrigger:hover:not(.selectDisabled) {
-    border-color: var(--olympus-primary, #7c3aed);
+    border-color: var(--olympus-primary);
     box-shadow: 0 0 0 1px var(--olympus-primary);
 }
 
 .selectTrigger:focus {
     outline: none;
-    border-color: var(--olympus-primary, #7c3aed);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    border-color: var(--olympus-primary);
+    box-shadow: 0 0 0 3px rgba(var(--olympus-primary-rgb), 0.1); /* 【修正3】使用RGB变量 */
 }
 
 /* 状态变体 */
 .selectTrigger.selectDisabled {
-    background: var(--olympus-bg, #0f0f23);
-    border-color: var(--olympus-border, #2d2d4d);
-    color: var(--olympus-text-secondary, #d0d0e0);
+    /* 【修正4】禁用状态使用更中性的颜色 */
+    background: var(--olympus-bg-tertiary);
+    border-color: var(--olympus-border-primary);
+    color: var(--olympus-text-tertiary);
     cursor: not-allowed;
     opacity: 0.6;
 }
 
 .selectTrigger.selectOpen {
-    border-color: var(--olympus-primary, #7c3aed);
+    border-color: var(--olympus-primary);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -59,7 +61,6 @@
     gap: var(--space-2, 8px);
     flex: 1;
     min-width: 0;
-    /* 允许文本截断 */
 }
 
 .selectSelectedIcon {
@@ -79,7 +80,7 @@
 .selectSelectedBalance {
     margin-left: auto;
     font-size: 12px;
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-secondary); /* 【修正5】使用次要文本色 */
     flex-shrink: 0;
     padding-left: var(--space-2, 8px);
 }
@@ -87,7 +88,7 @@
 /* 占位符文本 */
 .selectPlaceholder {
     font-size: 14px;
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-tertiary); /* 【修正6】使用辅助文本色 */
 }
 
 /* 箭头图标 */
@@ -99,8 +100,8 @@
     height: 16px;
     margin-left: var(--space-2, 8px);
     flex-shrink: 0;
-    transition: transform 0.2s var(--ease-out);
-    color: var(--olympus-text-secondary, #d0d0e0);
+    transition: transform 0.2s ease;
+    color: var(--olympus-text-secondary);
 }
 
 .selectOpen .selectArrow {
@@ -114,12 +115,12 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--olympus-surface, #1a1a2e);
-    border: 1px solid var(--olympus-primary, #7c3aed);
+    background: var(--olympus-bg-secondary); /* 【修正7】与触发器背景一致 */
+    border: 1px solid var(--olympus-primary);
     border-top: none;
     border-radius: 0 0 var(--radius-md, 8px) var(--radius-md, 8px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    animation: selectDropdownSlideIn 0.2s var(--ease-out);
+    animation: selectDropdownSlideIn 0.2s ease;
     overflow: hidden;
     max-height: 300px;
 }
@@ -127,26 +128,26 @@
 /* 搜索框 */
 .selectSearchBox {
     padding: var(--space-2, 8px);
-    border-bottom: 1px solid var(--olympus-border, #2d2d4d);
+    border-bottom: 1px solid var(--olympus-border-primary);
 }
 
 .selectSearchInput {
     width: 100%;
     padding: var(--space-2, 8px) var(--space-3, 12px);
-    background: var(--olympus-bg, #0f0f23);
-    border: 1px solid var(--olympus-border, #2d2d4d);
+    background: var(--olympus-bg-tertiary); /* 【修正8】使用三级背景 */
+    border: 1px solid var(--olympus-border-primary);
     border-radius: var(--radius-sm, 4px);
-    color: var(--olympus-text-primary, #a0a0b8);
+    color: var(--olympus-text-primary);
     font-size: 14px;
     outline: none;
 }
 
 .selectSearchInput:focus {
-    border-color: var(--olympus-primary, #7c3aed);
+    border-color: var(--olympus-primary);
 }
 
 .selectSearchInput::placeholder {
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-tertiary);
 }
 
 /* 选项列表 */
@@ -162,16 +163,16 @@
 }
 
 .selectOptionsList::-webkit-scrollbar-track {
-    background: var(--olympus-bg, #0f0f23);
+    background: var(--olympus-bg-tertiary);
 }
 
 .selectOptionsList::-webkit-scrollbar-thumb {
-    background: var(--olympus-border, #2d2d4d);
+    background: var(--olympus-border-primary);
     border-radius: 3px;
 }
 
 .selectOptionsList::-webkit-scrollbar-thumb:hover {
-    background: var(--olympus-primary, #7c3aed);
+    background: var(--olympus-primary);
 }
 
 /* 单个选项 */
@@ -181,16 +182,16 @@
     gap: var(--space-2, 8px);
     padding: var(--space-3, 12px) var(--space-4, 16px);
     cursor: pointer;
-    transition: background-color 0.1s var(--ease-out);
+    transition: background-color 0.1s ease;
     position: relative;
 }
 
 .selectOption:hover {
-    background: rgba(124, 58, 237, 0.1);
+    background: rgba(var(--olympus-primary-rgb), 0.1); /* 【修正9】使用RGB变量 */
 }
 
 .selectOption.selectSelected {
-    background: rgba(124, 58, 237, 0.15);
+    background: rgba(var(--olympus-primary-rgb), 0.15);
 }
 
 /* 选项图标 */
@@ -219,17 +220,17 @@
     gap: var(--space-1, 4px);
     font-size: 14px;
     font-weight: 500;
-    color: var(--olympus-text-primary, #a0a0b8);
+    color: var(--olympus-text-primary);
 }
 
 .selectOptionPrefix {
     font-size: 12px;
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-secondary);
 }
 
 .selectOptionBalance {
     font-size: 12px;
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-secondary);
 }
 
 /* 选中标记 */
@@ -239,7 +240,7 @@
     justify-content: center;
     width: 16px;
     height: 16px;
-    color: var(--olympus-primary, #7c3aed);
+    color: var(--olympus-primary);
     font-size: 12px;
     flex-shrink: 0;
 }
@@ -248,7 +249,7 @@
 .selectEmptyState {
     padding: var(--space-5, 24px) var(--space-4, 16px);
     text-align: center;
-    color: var(--olympus-text-secondary, #d0d0e0);
+    color: var(--olympus-text-secondary);
     font-size: 14px;
 }
 

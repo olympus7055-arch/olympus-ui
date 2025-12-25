@@ -4,6 +4,7 @@
     --olympus-primary: #7c3aed;
     --olympus-primary-hover: #6d28d9;
     --olympus-primary-pressed: #5b21b6;
+    --olympus-primary-rgb: 124, 58, 237;
 
     /* ===== 2. 功能语义色 ===== */
     /* 用于明确反馈状态，请勿与神话色混用 */
@@ -22,7 +23,7 @@
     --olympus-athena-pressed: #0e7490;
 
     --olympus-apollo: #fbbf24;      /* 阿波罗 - 光明/艺术 (使用更独特的“神食金”) */
-    --olympus-apollo-hover: #f59e0b;
+    --olympus-apollo-hover: #e0a800;
     --olympus-apollo-pressed: #d97706;
 
     --olympus-ares: #dc2626;        /* 阿瑞斯 - 战争/危险 (使用更深的红，区别于错误色) */
@@ -35,8 +36,8 @@
 
     /* 4. 神话元素色 */
     --olympus-olive: #84cc16;       /* 橄榄枝 - 和平 */
-    --olympus-laurel: #10b981;      /* 月桂 - 荣耀 */
-    --olympus-ambrosia: #fbbf24;    /* 神食 - 滋养 */
+    --olympus-laurel: #9ACD32;      /* 月桂 - 荣耀 */
+    --olympus-ambrosia: #FFD700;    /* 神食 - 滋养 */
     --olympus-starlight: #ff6b6b;   /* 星芒金 - 神性光芒 */
 
     /* ===== 5. 中性色 - 浅色主题默认值 ===== */
@@ -44,27 +45,34 @@
     --olympus-text-primary: #111827;
     --olympus-text-secondary: #6b7280;
     --olympus-text-tertiary: #9ca3af;
-    /* 背景色 */
-    --olympus-bg-primary: #ffffff;
-    --olympus-bg-secondary: #f9fafb;
-    --olympus-bg-tertiary: #f3f4f6;
-    --olympus-bg-mask: rgba(0, 0, 0, 0.45);
-    /* 边框色 */
+
+    /* 6 背景色 */
+    --olympus-mist: #ffffff;  /* 奥林匹斯雾霭色 */
+    --olympus-cloud: #f9fafb;
+    --olympus-shadow: #f3f4f6;
+    --olympus-veil: rgba(0, 0, 0, 0.45); /* 命运之纱 */
+    /* ===== 功能背景色 ===== */
+    --olympus-bg-primary: var(--olympus-mist);
+    --olympus-bg-secondary: var(--olympus-cloud);
+    --olympus-bg-tertiary: var(--olympus-shadow);
+    --olympus-bg-mask: var(--olympus-veil); /* 映射 */
+
+    /* 7. 边框色 */
     --olympus-border-primary: #e5e7eb;
     --olympus-border-secondary: #d1d5db;
 }
 
-/* ===== 6. 暗色主题覆盖 ===== */
+/* ===== 8. 暗色主题覆盖 ===== */
 @media (prefers-color-scheme: dark) {
     :root {
         /* 中性色 - 暗色主题值 */
-        --olympus-text-primary: #f3f4f6;    /* 奥林匹斯雾霭色 */
+        --olympus-mist: #0f0f23;
+        --olympus-cloud: #1a1a2e;
+        --olympus-shadow: #252545;
+        --olympus-veil: rgba(0, 0, 0, 0.65);
+        --olympus-text-primary: #f3f4f6;   
         --olympus-text-secondary: #d1d5db;
         --olympus-text-tertiary: #9ca3af;
-        --olympus-bg-primary: #0f0f23;
-        --olympus-bg-secondary: #1a1a2e;
-        --olympus-bg-tertiary: #252545;
-        --olympus-bg-mask: rgba(0, 0, 0, 0.65);
         --olympus-border-primary: #2d2d4d;
         --olympus-border-secondary: #3e3e5e;
     }

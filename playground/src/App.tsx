@@ -129,21 +129,27 @@ const App: React.FC = () => {
 
                     <div className={styles.componentVariants}>
                         <div className={styles.variant}>
-                            <h4>质量等级 1 - 优秀</h4>
+                            <h4>质量等级 - 优秀</h4>
                             <p>网络连接良好，延迟低</p>
-                            <NetworkQualityIndicator level={1} />
+                            <NetworkQualityIndicator level={4} />
                         </div>
 
                         <div className={styles.variant}>
-                            <h4>质量等级 2 - 良好</h4>
+                            <h4>质量等级 - 良好</h4>
                             <p>网络连接正常</p>
+                            <NetworkQualityIndicator level={3} />
+                        </div>
+
+                        <div className={styles.variant}>
+                            <h4>质量等级 - 一般</h4>
+                            <p>网络连接一般，可能有延迟</p>
                             <NetworkQualityIndicator level={2} />
                         </div>
-
+                        
                         <div className={styles.variant}>
-                            <h4>质量等级 3 - 一般</h4>
+                            <h4>质量等级 - 差</h4>
                             <p>网络连接一般，可能有延迟</p>
-                            <NetworkQualityIndicator level={3} />
+                            <NetworkQualityIndicator level={1} />
                         </div>
                     </div>
                 </div>

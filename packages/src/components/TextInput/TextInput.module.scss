@@ -6,37 +6,41 @@
   gap: 8px;
   width: 100%;
 
-  // 状态样式 - 使用 Sass 嵌套
+  // 状态样式
   &.focused {
     .inputWrapper {
-      border-color: var(--olympus-primary, #7C3AED);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      border-color: var(--olympus-primary);
+      box-shadow: 0 0 0 3px rgba(var(--olympus-primary-rgb, 124, 58, 237), 0.1);
     }
   }
 
   &.error {
     .inputWrapper {
-      border-color: var(--olympus-error, #EF4444);
+      border-color: var(--olympus-error);
     }
   }
 
   &.success {
     .inputWrapper {
-      border-color: var(--olympus-success, #10B981);
+      border-color: var(--olympus-success);
     }
   }
 
   &.disabled {
     .inputWrapper {
-      background: var(--olympus-surface, #1A1A2E);
-      border-color: var(--olympus-border, #2D2D4D);
+      background: var(--olympus-bg-tertiary);
+      border-color: var(--olympus-border-primary);
       opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 
   &.loading {
     .inputWrapper {
-      // Loading 状态的特殊样式
+      // 可以添加特殊的加载背景或边框闪烁
+      // background: linear-gradient(90deg, var(--olympus-bg-secondary) 25%, rgba(var(--olympus-primary-rgb), 0.05) 50%, var(--olympus-bg-secondary) 75%);
+      // background-size: 200% 100%;
+      // animation: loadingShimmer 1.5s infinite;
     }
   }
 }
@@ -44,12 +48,12 @@
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--olympus-text-primary, #F3F4F6);
+  color: var(--olympus-text-primary);
   line-height: 1.4;
 }
 
 .required {
-  color: var(--olympus-error, #EF4444);
+  color: var(--olympus-error);
   margin-left: 2px;
 }
 
@@ -57,15 +61,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid var(--olympus-border, #2D2D4D);
-  border-radius: var(--radius-md, 8px);
-  background: var(--olympus-surface, #1A1A2E);
-  transition: all 0.2s var(--olympus-ease-mythic, ease);
+  border: 1px solid var(--olympus-border-primary);
+  border-radius: 4px;
+  background: var(--olympus-bg-secondary);
+  transition: all 0.2s ease;
   overflow: hidden;
 
-  // 悬停效果
   &:hover:not(.disabled) {
-    border-color: var(--olympus-primary, #7C3AED);
+    border-color: var(--olympus-primary);
   }
 }
 
@@ -77,30 +80,28 @@
   background: transparent;
   font-size: 14px;
   line-height: 1.4;
-  color: var(--olympus-text-primary, #F3F4F6);
+  color: var(--olympus-text-primary);
   transition: inherit;
+  width: 100%;
 
-  // 移除默认样式
   &::placeholder {
-    color: var(--olympus-text-secondary, #D0D0E0);
+    color: var(--olympus-text-tertiary);
     opacity: 0.7;
   }
 
-  // 禁用状态样式
   &:disabled {
     background: transparent;
-    color: var(--olympus-text-secondary, #D0D0E0);
+    color: var(--olympus-text-tertiary);
     cursor: not-allowed;
 
     &::placeholder {
-      color: var(--olympus-text-secondary, #D0D0E0);
       opacity: 0.5;
     }
   }
 
-  // 只读状态
   &:read-only {
-    background: var(--olympus-bg, #0F0F23);
+    background: var(--olympus-bg-tertiary);
+    cursor: default;
   }
 }
 
@@ -111,21 +112,21 @@
   align-items: center;
   justify-content: center;
   padding: 0 12px;
-  color: var(--olympus-text-secondary, #D0D0E0);
+  color: var(--olympus-text-secondary);
   transition: color 0.2s ease;
+  flex-shrink: 0;
 
-  // 禁用状态的图标
   .disabled & {
     opacity: 0.5;
   }
 }
 
 // 有前缀图标时的输入框内边距调整
-.startIcon + .input {
+.startIcon ~ .input {
   padding-left: 8px;
 }
 
-// Loading 状态
+// Loading 状态 - 可以与你的神话Spinner组件结合
 .loadingIndicator {
   position: absolute;
   right: 12px;
@@ -133,33 +134,22 @@
   align-items: center;
 }
 
-.spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top: 2px solid var(--olympus-primary, #7C3AED);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
 // 辅助文本
 .helperText {
   font-size: 12px;
-  color: var(--olympus-text-secondary, #D0D0E0);
+  color: var(--olympus-text-secondary);
   line-height: 1.3;
   transition: color 0.2s ease;
+  min-height: 1em;
 
-  // 错误状态的辅助文本
   &.helperTextError {
-    color: var(--olympus-error, #EF4444);
+    color: var(--olympus-error);
   }
 
-  // 成功状态的辅助文本
   .success & {
-    color: var(--olympus-success, #10B981);
+    color: var(--olympus-success);
   }
 
-  // 禁用状态的辅助文本
   .disabled & {
     opacity: 0.6;
   }
@@ -172,17 +162,18 @@
     .input {
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 13px;
+      letter-spacing: 0.02em;
     }
 
     &.valid {
       .inputWrapper {
-        border-color: var(--olympus-success, #10B981);
+        border-color: var(--olympus-success);
       }
     }
 
     &.invalid {
       .inputWrapper {
-        border-color: var(--olympus-error, #EF4444);
+        border-color: var(--olympus-error);
       }
     }
   }
@@ -193,4 +184,10 @@
       text-transform: lowercase;
     }
   }
+}
+
+// 如果需要，可以在此定义动画（或者确保它们存在于导入的animations中）
+@keyframes loadingShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

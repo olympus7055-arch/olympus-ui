@@ -1,18 +1,19 @@
-/* 主容器 */
+/* 主容器 - 使用你的背景变量 */
 .playgroundContainer {
     display: flex;
     height: 100vh;
-    background: #f8fafc;
+    background: var(--olympus-bg-primary); /* 使用主背景色 */
     font-family:
         -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
         'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    color: var(--olympus-text-primary); /* 确保基础文字色 */
 }
 
 /* 侧边栏样式 */
 .sidebar {
     width: 280px;
-    background: white;
-    border-right: 1px solid #e2e8f0;
+    background: var(--olympus-bg-secondary); /* 使用二级背景 */
+    border-right: 1px solid var(--olympus-border-primary); /* 使用边框变量 */
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
@@ -20,7 +21,8 @@
 
 .sidebarHeader {
     padding: 24px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--olympus-border-primary);
+    /* 保持品牌渐变，不受主题影响 */
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
 }
 
@@ -39,7 +41,7 @@
 .logoText {
     font-size: 1.25rem;
     font-weight: 700;
-    color: white;
+    color: white; /* 在紫色渐变上，保持白色 */
     letter-spacing: -0.025em;
 }
 
@@ -64,20 +66,20 @@
     text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #64748b;
+    color: var(--olympus-text-secondary); /* 使用次要文本色 */
     border-left: 3px solid transparent;
     position: relative;
 }
 
 .navButton:hover {
-    background: #f8fafc;
-    color: #475569;
+    background: var(--olympus-bg-tertiary); /* 使用三级背景作为悬停 */
+    color: var(--olympus-text-primary);
 }
 
 .navButtonActive {
-    background: #f8fafc;
-    color: #8b5cf6;
-    border-left-color: #8b5cf6;
+    background: var(--olympus-bg-tertiary);
+    color: var(--olympus-primary); /* 使用你的品牌主色高亮 */
+    border-left-color: var(--olympus-primary);
     font-weight: 600;
 }
 
@@ -97,11 +99,11 @@
 
 .sidebarFooter {
     padding: 16px 24px;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid var(--olympus-border-primary);
 }
 
 .version {
-    color: #94a3b8;
+    color: var(--olympus-text-tertiary); /* 使用辅助文本色 */
     font-size: 0.75rem;
     font-weight: 500;
 }
@@ -111,13 +113,14 @@
     flex: 1;
     padding: 0;
     overflow-y: auto;
-    background: var(--olympus-bg-page);
+    background: var(--olympus-bg-primary); /* 统一使用主背景 */
 }
 
 /* 组件展示区域 */
 .componentShowcase {
-    background: white;
+    background: var(--olympus-bg-secondary); /* 卡片使用二级背景 */
     border-radius: 12px;
+    border: 1px solid var(--olympus-border-primary); /* 添加边框区分 */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 24px;
@@ -125,13 +128,14 @@
 
 .componentHeader {
     padding: 32px;
-    border-bottom: 1px solid #f1f5f9;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--olympus-border-primary);
+    /* 修改为使用你的背景变量，而非固定渐变 */
+    background: var(--olympus-bg-tertiary);
 }
 
 .componentHeader h2 {
     margin: 0 0 8px 0;
-    color: #1e293b;
+    color: var(--olympus-text-primary); /* 使用主要文本色 */
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.3;
@@ -139,7 +143,7 @@
 
 .componentHeader p {
     margin: 0;
-    color: #64748b;
+    color: var(--olympus-text-secondary); /* 使用次要文本色 */
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -152,27 +156,27 @@
 
 .variant {
     padding: 24px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--olympus-border-primary);
     border-radius: 8px;
-    background: #f8fafc;
+    background: var(--olympus-bg-tertiary); /* 使用三级背景 */
     transition: all 0.2s ease;
 }
 
 .variant:hover {
-    border-color: #cbd5e1;
+    border-color: var(--olympus-border-secondary); /* 悬停时使用强调边框色 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .variant h4 {
     margin: 0 0 8px 0;
-    color: #374151;
+    color: var(--olympus-text-primary);
     font-size: 1rem;
     font-weight: 600;
 }
 
 .variant p {
     margin: 0 0 16px 0;
-    color: #6b7280;
+    color: var(--olympus-text-secondary);
     font-size: 0.875rem;
     line-height: 1.4;
 }
@@ -185,12 +189,12 @@
     justify-content: center;
     height: 100%;
     text-align: center;
-    color: #64748b;
+    color: var(--olympus-text-secondary);
 }
 
 .emptyState h2 {
     margin: 0 0 8px 0;
-    color: #475569;
+    color: var(--olympus-text-primary);
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -211,7 +215,7 @@
         width: 100%;
         height: auto;
         border-right: none;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 1px solid var(--olympus-border-primary);
     }
 
     .mainContent {
